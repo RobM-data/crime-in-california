@@ -3,35 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Data Science Portfolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 20px; }
-        h1 { color: #333; }
-        a { color: #007bff; text-decoration: none; }
-        iframe { width: 100%; height: 600px; border: none; }
-    </style>
+    <title>Project Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleLanguage(lang) {
+            document.querySelectorAll("[data-en]").forEach(el => {
+                el.style.display = lang === 'en' ? 'block' : 'none';
+            });
+            document.querySelectorAll("[data-zh]").forEach(el => {
+                el.style.display = lang === 'zh' ? 'block' : 'none';
+            });
+        }
+    </script>
 </head>
-<body>
-    <h1>📊 My Data Science Portfolio</h1>
-    <p>Welcome to my portfolio! This page showcases my data analysis projects.</p>
+<body class="bg-gray-100 text-gray-900">
+    <header class="bg-blue-600 text-white py-6 text-center">
+        <h1 class="text-4xl font-bold" data-en id="project-title">Project Title</h1>
+        <h1 class="text-4xl font-bold" data-zh id="project-title-zh" style="display:none;">项目标题</h1>
+        <button onclick="toggleLanguage('en')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">English</button>
+        <button onclick="toggleLanguage('zh')" class="mt-4 px-4 py-2 bg-white text-blue-600 rounded">中文</button>
+    </header>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <img id="project-image" src="https://via.placeholder.com/800x400" alt="Project Image" class="w-full rounded-lg shadow">
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Project Overview</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目概述</h2>
+        <p id="project-description" class="text-gray-700" data-en>Detailed description of the project goes here...</p>
+        <p id="project-description-zh" class="text-gray-700" data-zh style="display:none;">项目的详细描述将在这里展示...</p>
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Technologies Used</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">使用的技术</h2>
+        <ul id="project-tech" class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <li class="bg-white p-4 rounded-lg shadow">Python</li>
+            <li class="bg-white p-4 rounded-lg shadow">Machine Learning</li>
+        </ul>
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4" data-en>Project Links</h2>
+        <h2 class="text-2xl font-semibold mb-4" data-zh style="display:none;">项目链接</h2>
+        <ul class="space-y-2">
+            <li><a id="data-collection-link" href="#" class="text-blue-600 hover:underline" data-en>Data Collection & Cleaning</a>
+                <a id="data-collection-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">数据收集与清理</a></li>
+            <li><a id="eda-link" href="#" class="text-blue-600 hover:underline" data-en>Exploratory Data Analysis (EDA)</a>
+                <a id="eda-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">探索性数据分析（EDA）</a></li>
+            <li><a id="dashboard-link" href="#" class="text-blue-600 hover:underline" data-en>Dashboard & Visualizations</a>
+                <a id="dashboard-link-zh" href="#" class="text-blue-600 hover:underline" data-zh style="display:none;">仪表板和可视化</a></li>
+        </ul>
+    </section>
+    
+    <section class="max-w-4xl mx-auto p-6 text-center">
+        <a href="index.html" class="text-blue-600 hover:underline" data-en>Back to Portfolio</a>
+        <a href="index.html" class="text-blue-600 hover:underline" data-zh style="display:none;">返回作品集</a>
+    </section>
+    
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectName = urlParams.get("name") || "Project Title";
+        const projectNameZh = urlParams.get("name_zh") || "项目标题";
+        const projectDescription = urlParams.get("desc") || "Detailed description of the project goes here...";
+        const projectDescriptionZh = urlParams.get("desc_zh") || "项目的详细描述将在这里展示...";
+        const projectImage = urlParams.get("img") || "https://via.placeholder.com/800x400";
 
-    <h2>🔍 Crime Data Analysis Project</h2>
-    <p>In this project, I analyzed crime data using Python and visualized the results in Tableau.</p>
-
-    <h3>📂 View Dataset on Kaggle</h3>
-    <p>You can find the full dataset on Kaggle:</p>
-    <a href="https://www.kaggle.com/datasets/robmartin2/crime-data-cleaned" target="_blank">📊 View on Kaggle</a>
-
-    <h3>📜 Jupyter Notebook</h3>
-    <p>View my notebook with the full analysis and Python code:</p>
-    <a href="Crime Data Analysis.html" target="_blank">📂 Open Notebook</a>
-
-    <h3>📈 Tableau Visualization</h3>
-    <p>Below is an interactive Tableau dashboard displaying crime trends:</p>
-    <iframe src="https://public.tableau.com/views/YOUR-DASHBOARD-LINK?:showVizHome=no&:embed=true"></iframe>
-
-    <h3>📂 View Project on GitHub</h3>
-    <p>Check out the full code and dataset here:</p>
-    <a href="https://github.com/RobM-data/crime-data-analysis" target="_blank">📁 View GitHub Repo</a>
+        document.getElementById("project-title").textContent = projectName;
+        document.getElementById("project-title-zh").textContent = projectNameZh;
+        document.getElementById("project-description").textContent = projectDescription;
+        document.getElementById("project-description-zh").textContent = projectDescriptionZh;
+        document.getElementById("project-image").src = projectImage;
+    </script>
 </body>
 </html>
