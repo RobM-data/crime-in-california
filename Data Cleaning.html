@@ -7535,26 +7535,42 @@ a.anchor-link {
 </div>
 
 <style>
-    .container {
-        text-align: center; /* Centers the heading */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
+
+    .container {
+        text-align: center; /* Centers the main heading */
+        padding: 20px;
+    }
+
     .image-container {
         display: flex;
-        justify-content: center; /* Align images and text */
-        gap: 20px; /* Space between images */
-        margin-top: 10px;
+        justify-content: space-between; /* Spreads images evenly */
+        align-items: center;
+        gap: 20px;
+        padding: 0 5%; /* Adds padding on sides */
     }
+
     .image-box {
-        text-align: center; /* Centers text above each image */
+        flex: 1; /* Makes both images take equal width */
+        text-align: center;
     }
+
     .image-box img {
-        width: 300px; /* Adjust size as needed */
-        height: auto;
-        display: block;
-        margin: 0 auto; /* Ensures images remain centered */
+        width: 100%; /* Makes images take full width of their container */
+        max-width: 100%; /* Ensures they don't overflow */
+        height: auto; /* Maintains aspect ratio */
+        border-radius: 10px; /* Optional: Adds rounded corners */
+    }
+
+    .image-box h3 {
+        margin-bottom: 10px; /* Space between text and image */
+        font-size: 1.5rem;
     }
 </style>
-
 <div class="container">
     <div class="image-container">
         <div class="image-box">
