@@ -73,7 +73,10 @@
     <title>Project Details</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+        currentLanguage = "en";
+        
         function toggleLanguage(lang) {
+            currentLanguage = lang;
             document.querySelectorAll("[data-en]").forEach(el => {
                 el.style.display = lang === 'en' ? 'block' : 'none';
             });
