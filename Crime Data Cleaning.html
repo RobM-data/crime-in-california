@@ -60,6 +60,76 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .il { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Integer.Long */
   </style>
 <style type="text/css">
+
+    
+        [data-en], [data-zh] {
+            display: block; /* Ensures elements appear on separate lines */
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 175px;
+            height: 100vh;
+            position: fixed;
+            left: -200px; /* Hidden by default */
+            top: 0;
+            background: #333;
+            color: white;
+            transition: left 0.3s ease-in-out;
+            z-index: 9999;
+            padding-top: 88px;
+            padding-left: 22px;
+        }
+        
+        /* Sidebar Open */
+        .sidebar.active {
+            left: 0;
+        }
+        
+        /* Hamburger Button */
+        .open-btn {
+            position: fixed;
+            left: 10px;
+            top: 18px;
+            font-size: 24px;
+            padding: 10px;
+            background: none; /* Default color when sidebar is closed */
+            color: black;
+            border: none;
+            cursor: pointer;
+            z-index: 10000; /* Ensures it stays on top */
+            transition: background 0.3s ease-in-out;
+        }
+        
+        /* Change Button Color When Sidebar is Open */
+        .sidebar.active + .open-btn {
+            background: none; /* Changes to white when sidebar is open */
+            color: white;
+        }
+
+        /* Hide sub-links by default */
+        .dropdown-menu {
+            display: none;
+            padding-left: 5px; /* Indent sub-links */
+        }
+
+        /* Style sub-links with a shorter white line */
+        .dropdown-menu li {
+            padding: 4px 0; /* Reduce gap between text and line */
+            border-bottom: 1px solid white; /* White line */
+            width: 70%; /* Make the line shorter than the full sidebar width */
+            margin: 0 auto; /* Center the line */
+            display: flex;
+            align-items: center;
+            line-height: 1.5;
+        }
+        
+        /* Remove the bottom border for the last sub-link */
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+
+    
 /*-----------------------------------------------------------------------------
 | Copyright (c) Jupyter Development Team.
 | Distributed under the terms of the Modified BSD License.
