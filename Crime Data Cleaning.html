@@ -11229,6 +11229,66 @@ dtype: object</pre>
             notebookContainer.style.padding = "0";
             notebookContainer.style.width = "100%";
         }
+
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            let menuButton = document.getElementById("menu-btn");
+        
+            sidebar.classList.toggle("active");
+        
+            // Toggle button color based on sidebar state
+            if (sidebar.classList.contains("active")) {
+                menuButton.style.background = "none";
+                menuButton.style.color = "white";
+            } else {
+                menuButton.style.background = "none";
+                menuButton.style.color = "black";
+            }
+        }
+                
+        function toggleDropdown(event) {
+            event.preventDefault();
+
+            if (currentLanguage === "zh") {
+                submenu = event.target.nextElementSibling;
+            } else {
+                submenu = event.target.nextElementSibling.nextElementSibling;
+            }
+            
+            // Toggle display property
+            if (submenu.style.display === "block") {
+                submenu.style.display = "none";
+            } else {
+                submenu.style.display = "block";
+            }
+        }
+
+
+        document.addEventListener("click", function(event) {
+            let sidebar = document.getElementById("sidebar");
+            let menuButton = document.getElementById("menu-btn");
+        
+            // Check if the sidebar is open
+            if (sidebar.classList.contains("active")) {
+                // If the clicked element is NOT inside the sidebar, menu button, or language buttons, close the sidebar
+                if (
+                    !sidebar.contains(event.target) && 
+                    !menuButton.contains(event.target) &&
+                    !event.target.classList.contains("lang-btn") // Prevent closing on language button click
+                ) {
+                    sidebar.classList.remove("active");
+        
+                    // Reset the button color when sidebar closes
+                    menuButton.style.color = "black";
+                }
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            let savedLanguage = localStorage.getItem("selectedLanguage") || "en";
+            currentLanguage = savedLanguage; // Restore the saved language
+            toggleLanguage(savedLanguage);
+        });
     </script>
 </body>
 </html>
