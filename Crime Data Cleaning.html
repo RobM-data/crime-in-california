@@ -7587,6 +7587,27 @@ a.anchor-link {
 <main>
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+
+        let currentLanguage = "en"
+        
+        function toggleLanguage(lang) {
+            currentLanguage = lang; // Store the language globally
+            localStorage.setItem("selectedLanguage", lang); // Save language choice
+        
+            document.querySelectorAll("[data-en]").forEach(el => {
+                el.style.visibility = lang === 'en' ? "visible" : "hidden";
+                el.style.display = lang === 'en' ? "block" : "none";
+            });
+        
+            document.querySelectorAll("[data-zh]").forEach(el => {
+                el.style.visibility = lang === 'zh' ? "visible" : "hidden";
+                el.style.display = lang === 'zh' ? "block" : "none";
+            });
+        
+            console.log("Current language is now:", currentLanguage);
+        }
+    </script>
     
     <header class="bg-blue-600 text-white py-6 text-center">
         <div class="flex items-center justify-between">
