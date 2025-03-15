@@ -203,8 +203,8 @@
         const urlParams = new URLSearchParams(window.location.search);
         const projectName = urlParams.get("name") || "Crime in California";
         const projectNameZh = urlParams.get("name_zh") || "加利福尼亚州犯罪";
-        const projectDescription = urlParams.get("desc") || "Detailed description of the project goes here...";
-        const projectDescriptionZh = urlParams.get("desc_zh") || "项目的详细描述将在这里展示...";
+        const projectDescription = urlParams.get("desc") || "In this project I use Pandas and Numpy to clean up data related to crime in California. I continue using Python to perform basic EDA and arrange the most useful charts using Dash. Finally, I create a dashboard in Tableau that allows for easy and efficient analysis of the data.";
+        const projectDescriptionZh = urlParams.get("desc_zh") || "在这个项目中，我使用 Pandas 和 Numpy 清理与加利福尼亚犯罪相关的数据。然后，我继续使用 Python 进行基本的EDA，并使用 Dash 创建最有用的图表。最后，我在 Tableau 中创建了一个仪表板，以实现对数据的高效分析。";
         const projectImage = urlParams.get("img") || "https://via.placeholder.com/800x400";
 
         document.getElementById("project-title").textContent = projectName;
